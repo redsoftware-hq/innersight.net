@@ -24,9 +24,9 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/logo.jpg`,
+        icon: `src/images/logo.jpeg`,
       },
     },
     `gatsby-plugin-styled-components`,
   ],
-}
+};
