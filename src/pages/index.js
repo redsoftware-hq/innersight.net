@@ -535,8 +535,8 @@ function Index() {
         {lightboxIsOpen ? (
           <Modal onClose={toggleLightbox}>
             <Carousel
+              showNavigationOnTouchDevice={true}
               currentIndex={selectedIndex}
-              frameProps={{ autoSize: 'height' }}
               views={IMAGES}
             />
           </Modal>
