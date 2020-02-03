@@ -478,6 +478,7 @@ function Index() {
           background: #5b6566;
           width: 100%;
         `}
+        id="contact-us"
       >
         <Section
           css={`
