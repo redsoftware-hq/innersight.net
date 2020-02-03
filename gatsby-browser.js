@@ -5,5 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+import 'typeface-raleway';
 import 'normalize.css';
 import './src/global.css';
