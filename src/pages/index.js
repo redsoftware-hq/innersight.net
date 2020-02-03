@@ -510,9 +510,11 @@ function Index() {
       />
       <Gallery
         css={`
-          max-width: 55rem;
-          margin: 0 auto;
-          margin-bottom: 4rem;
+          ${DEVICES.tablet} {
+            max-width: 55rem;
+            margin: 0 auto;
+            margin-bottom: 4rem;
+          }
         `}
       >
         {IMAGES.map(({ caption, source }, j) => (
