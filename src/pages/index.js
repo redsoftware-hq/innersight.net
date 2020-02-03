@@ -16,6 +16,12 @@ import gallery3 from '../images/gallery-03.jpg';
 import gallery4 from '../images/gallery-04.jpg';
 import gallery5 from '../images/gallery-05.jpg';
 
+const DEVICES = {
+  mobile: '@media (min-width: 576px)',
+  tablet: '@media (min-width: 768px)',
+  desktop: '@media (min-width: 992px)',
+};
+
 const IMAGES = [
   { source: gallery0, caption: '' },
   { source: gallery1, caption: '' },
@@ -71,10 +77,14 @@ const Anchor = styled.a`
 `;
 
 const Section = styled.div`
-  margin: 0 auto;
-  max-width: 32rem;
+  margin: 2rem;
   text-align: center;
   margin-bottom: 4rem;
+
+  ${DEVICES.tablet} {
+    max-width: 32rem;
+    margin: 0 auto;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -115,13 +125,25 @@ const SectionText = styled.p`
 
 const Service = styled.div`
   display: flex;
-  margin: 2rem auto;
+  flex-wrap: wrap;
+  margin: 2rem;
   max-width: 55rem;
 
   img {
     border-radius: 100%;
-    width: 350px;
-    margin-right: 4rem;
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  ${DEVICES.tablet} {
+    margin: 2rem auto;
+    flex-wrap: nowrap;
+
+    img {
+      border-radius: 100%;
+      width: 350px;
+      margin-right: 4rem;
+    }
   }
 `;
 
@@ -156,13 +178,25 @@ const ServiceText = styled.div`
 
 const Person = styled.div`
   display: flex;
-  margin: 2rem auto;
-  max-width: 55rem;
+  flex-wrap: wrap;
+  margin: 2rem;
 
   img {
     border-radius: 100%;
     width: 250px;
-    margin-right: 4rem;
+    margin: 0 auto;
+  }
+
+  ${DEVICES.tablet} {
+    flex-wrap: nowrap;
+    margin: 2rem auto;
+    max-width: 55rem;
+
+    img {
+      border-radius: 100%;
+      width: 250px;
+      margin-right: 4rem;
+    }
   }
 `;
 
@@ -185,6 +219,7 @@ const PersonText = styled.div`
   }
 
   p {
+    text-align: left;
     margin: 0;
     margin-bottom: 1.25rem;
     text-align: justify;
@@ -219,16 +254,25 @@ function Index() {
       />
       <div
         css={`
-          height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
+          height: 350px;
+
+          ${DEVICES.tablet} {
+            height: 100vh;
+          }
         `}
       >
         <img
           css={`
-            width: 350px;
-            height: 350px;
+            width: 250px;
+            height: 250px;
+
+            ${DEVICES.tablet} {
+              width: 350px;
+              height: 350px;
+            }
           `}
           src={logo}
           alt="InnerSight Logo"
@@ -238,11 +282,25 @@ function Index() {
         css={`
           padding: 1rem;
           display: flex;
-          justify-content: space-around;
-          max-width: 60%;
-          margin: 0 auto;
-          font-family: 'Arial', sans-serif;
-          box-sizing: border-box;
+          flex-direction: column;
+
+          ${Anchor} {
+            margin: 0.2rem;
+            text-align: center;
+          }
+
+          ${DEVICES.tablet} {
+            justify-content: space-around;
+            max-width: 60%;
+            margin: 0 auto;
+            font-family: 'Arial', sans-serif;
+            box-sizing: border-box;
+            flex-direction: row;
+
+            ${Anchor} {
+              margin: inherit;
+            }
+          }
         `}
       >
         <Anchor onClick={() => scrollTo('#services')}>Services</Anchor>
@@ -280,8 +338,10 @@ function Index() {
       >
         <img
           css={`
-            margin-left: 4rem;
-            margin-right: 0 !important;
+            ${DEVICES.tablet} {
+              margin-left: 4rem;
+              margin-right: 0 !important;
+            }
           `}
           src={image2}
           alt="Consultation and Supervision"
@@ -363,8 +423,8 @@ function Index() {
       <div
         css={`
           display: flex;
-          width: 55rem;
-          margin: 0 auto;
+          flex-wrap: wrap;
+          margin: 2rem;
           color: #a1a1a1;
           font-family: 'Raleway', sans-serif;
           font-size: 1em;
@@ -372,8 +432,14 @@ function Index() {
           line-height: 1.5;
           font-weight: 400;
 
-          div {
-            padding: 0 0 0 3.5rem;
+          ${DEVICES.tablet} {
+            flex-wrap: nowrap;
+            width: 55rem;
+            margin: 0 auto;
+
+            div {
+              padding: 0 0 0 3.5rem;
+            }
           }
         `}
       >
@@ -438,7 +504,7 @@ function Index() {
         css={`
           margin: 4rem auto;
           position: relative;
-          width: 55rem;
+          width: 70%;
           border: 0.5px solid rgba(255, 255, 255, 0.231);
         `}
       />
@@ -446,6 +512,7 @@ function Index() {
         css={`
           max-width: 55rem;
           margin: 0 auto;
+          margin-bottom: 4rem;
         `}
       >
         {IMAGES.map(({ caption, source }, j) => (
